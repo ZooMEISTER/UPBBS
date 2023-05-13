@@ -1,0 +1,8 @@
+/* components/postList/postList.wxss */
+/* 帖子列表里面每个帖子的单独view */
+.postListSinglePostViewClass{
+  height: 100rpx;
+  border-bottom: solid 1px rgb(194, 194, 194);
+  display: flex;
+  align-items: center;
+}

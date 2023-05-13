@@ -1,0 +1,16 @@
+/* pages/addNewPostPage/addNewPostPage.wxss */
+/* 包含了用户选择帖子类型的picker的view的类选择器 */
+.userPickNewPostOutsideViewClass{
+  /* border: solid 1px; */
+  display: flex;
+  justify-content: center;
+}
+
+/* 用户选择帖子类型的picker的内部的view的类选择器 */
+.userPickNewPostInsideViewClass{
+  height: 70rpx; 
+  width: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

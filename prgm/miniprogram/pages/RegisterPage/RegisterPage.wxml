@@ -1,0 +1,70 @@
+<!--pages/RegisterPage/RegisterPage.wxml-->
+<!-- <text>pages/RegisterPage/RegisterPage.wxml</text> -->
+
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+
+<!-- 注册用户的头像 -->
+<view class="tempRegisterUserAvatarImageBoxViewViewClass">
+  <view class="tempRegisterUserAvatarImageBoxViewClass">
+    <image src="{{tempRegisterUserAvatarUrl}}" class="tempRegisterUserAvatarImageBox"></image>
+  </view>
+</view>
+
+<!-- 间隔view -->
+<view class="spaceView01"></view>
+
+<!-- 上传头像按钮 -->
+<view>
+  <button type="default" bindtap="UploadRegisterUserAvatar">上传头像</button>
+</view>
+
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+
+<!-- 注册用户输入的用户名 -->
+<view class="RegisterUserInfoTextBoxViewClass">
+  <text decode="{{true}}">&ensp;&ensp;</text>用户名：<input type='text' bindinput="inputRegisterUserName" class="RegisterUserInfoTextBoxClass" auto-focus/>
+</view>
+
+<view class="spaceView01"></view>
+
+<!-- 注册用户输入的密码 -->
+<view class="RegisterUserInfoTextBoxViewClass">
+  <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;</text>密码：<input type='text' bindinput="inputRegisterUserPassword" password="true" class="RegisterUserInfoTextBoxClass"/>
+</view>
+
+<view class="spaceView01"></view>
+
+<!-- 注册用户输入的密码 -->
+<view class="RegisterUserInfoTextBoxViewClass">
+  重复密码：<input type='text' bindinput="inputRegisterUserPassword2" password="true" class="RegisterUserInfoTextBoxClass"/>
+</view>
+
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+
+<!-- 用户选择自己的学校 -->
+<view class="schoolPickerOutsideViewClass">
+  <picker bindchange="schoolPickerChange" value="{{index}}" range="{{allSchoolsList_RegisterPage}}">
+    <view class="schoolPickerInsideViewClass">
+      <text decode="{{true}}">&nbsp;当前选择学校：{{tempRegisterUserChosenSchool}}</text>
+    </view>
+  </picker>
+</view>
+
+<view class="spaceView01"></view>
+<view class="spaceView01"></view>
+
+<!-- 注册用户的按钮 -->
+<view class="RegisterButtonViewClass">
+  <button type="primary" class="RegisterButtonClass" bindtap="RegisterNewUserStep01">注册</button>
+</view>

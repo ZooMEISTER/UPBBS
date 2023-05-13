@@ -1,0 +1,19 @@
+/* pages/showPostPage/showPostPage.wxss */
+/* 包含了帖子标题和1楼的view的类选择器 */
+.postRootViewClass{
+  border-bottom: solid 1px black;
+}
+
+/* 包含了页面底下的回复的view的类选择器 */
+.replyButtonViewClass{
+  border-top: solid 1px black;
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+}

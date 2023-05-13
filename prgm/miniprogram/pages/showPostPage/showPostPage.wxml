@@ -1,0 +1,63 @@
+<!--pages/showPostPage/showPostPage.wxml-->
+<!-- <text>pages/showPostPage/showPostPage.wxml</text> -->
+<!-- <text>post id is {{thisPostID}}</text> -->
+
+<!-- 包含了帖子标题和1楼的view -->
+<view class="postRootViewClass">
+  <!-- 包含了帖子标题的view -->
+  <view style="width: 100%;height: 100rpx;text-align: center;font-size: larger;">
+    <text>{{thisPostTitle}}</text>
+  </view>
+  <!-- 包含了发帖人头像和用户名的view -->
+  <view style="display: flex;flex-direction: row;align-items: center;">
+    <image style="width: 80rpx; height: 80rpx;" src="{{thisPostPublisherAvatarURL}}"></image>
+    <text decode="{{true}}">&nbsp;{{thisPostPublisherName}}&nbsp;&nbsp;</text>
+    <text decode="{{true}}" style="background-color: rgb(5, 212, 5);color: white;">&nbsp;楼主&nbsp;</text>
+    <text decode="{{true}}">&nbsp;&nbsp;来自&nbsp;&nbsp;{{thisPostPublisherSchool}}</text>
+  </view>
+  <view style="height: 40rpx;"></view>
+  <!-- 包含了一楼内容的view -->
+  <view>
+    <text>{{thisPostDescription}}</text>
+  </view>
+  <view style="height: 20rpx;"></view>
+  <view style="font-size: small;text-align: right;">
+    <text>{{thisPostPublishDate}}</text>
+  </view>
+  <view style="height: 5rpx;"></view>
+  <!-- 若已登录用户是发这个帖子的人，则有删帖按钮 -->
+  <view wx:if="{{loggedUserID_showPostPages == thisPostPublisherID}}" style="border: solid 0px; display: flex;justify-content: flex-end;">
+    <image style="height: 50rpx;width: 50rpx;" src="cloud://cloud1-5gy723zk5fbe2c6a.636c-cloud1-5gy723zk5fbe2c6a-1314128664/img/deletepost.png" bindtap="DeleteThisPost"></image>
+  </view>
+  <view style="height: 15rpx;"></view>
+</view>
+
+<!-- 接下来是回复 -->
+<view wx:for="{{t1}}" wx:key="index" style="border-bottom: solid 1px rgb(192, 192, 192);" class="thisPostSingleReplyViewClass">
+  <view style="display: flex;flex-direction: row;align-items: center;">
+    <image style="height: 60rpx; width: 60rpx;" src="{{item['avatarurl']}}"></image>  <!-- 回复的头像 -->
+    <text decode="{{true}}">&nbsp;{{item["name"]}}:&nbsp;&nbsp;</text>  <!-- 回复的用户名 -->
+    <view wx:if="{{item['name'] == thisPostPublisherName}}"><text decode="{{true}}" style="background-color: rgb(5, 212, 5);color: white;">&nbsp;楼主&nbsp;</text></view>
+    <view wx:else></view>
+  </view>
+  <view>
+    <text decode="{{true}}" style="word-wrap: break-word;word-break: break-all;white-space: pre-line">{{item["reply"]}}</text>
+  </view>
+  <view style="height: 50rpx;"></view>
+  <view style="font-size: small; text-align: right;"><text decode="{{true}}">{{index + 2}}楼</text></view>
+  <view style="font-size: small; text-align: right;"><text decode="{{true}}">{{item["date"]}}</text></view>
+  <view style="height: 10rpx;"></view>
+</view>
+
+<!-- 用一个大的空白view作底，增加适配性 -->
+<view style="text-align: center;height: 250rpx;"><text decode="{{true}}">\n下面没有啦</text></view>
+
+<!-- 下面是用户回复部分 -->
+<view class="replyButtonViewClass" bindtap="AddReply">点击回复楼主</view>
+
+<!-- 用户填写回复内容的弹窗 -->
+<modal hidden="{{hideReplyModal}}" title="请输入您的回复" confirm-text="确认回复" cancel-text="取消" bindcancel="ReplyCancel" bindconfirm="ReplyConfirm">  
+  <view style="display: flex;justify-content: center;">
+    <textarea name="replyInputBox" placeholder="在此输入回复 <= 200字" style="height: 400rpx;border: solid 1px rgb(194, 194, 194);" bindinput="inputReply" maxlength="200" value="{{tempInputReplyContent}}" auto-focus/>  
+  </view>
+</modal>  

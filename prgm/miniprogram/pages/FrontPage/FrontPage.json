@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "inPageTabs":"../../components/inPageTabs/inPageTabs",
+    "postList":"../../components/postList/postList"
+  },
+  "enablePullDownRefresh": true
+}

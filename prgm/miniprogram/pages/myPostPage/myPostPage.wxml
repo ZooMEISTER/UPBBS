@@ -1,0 +1,16 @@
+<!--pages/myPostPage/myPostPage.wxml-->
+<!-- <text>pages/myPostPage/myPostPage.wxml</text> -->
+
+<view style="border: solid 0px red;"> <!-- wx:if="{{myPostPageStatus_myPostPage == 'mypost'}}" -->
+  <view style="border: solid 0px green;">
+    <postList allPostList="{{showPostsList3}}"></postList>
+  </view>
+
+  <!-- 如果显示的是我的浏览历史 则需要下面这个占位view -->
+  <view wx:if="{{myPostPageStatus_myPostPage == 'history'}}" style="width: 100%;height: 100rpx;"></view>
+</view>
+
+<!-- 如果是显示我的浏览历史，则需要显示下面这个清空历史的选项 -->
+<view wx:if="{{myPostPageStatus_myPostPage == 'history'}}" style="border-top: solid 1px; height: 100rpx;width: 100%; display: flex;justify-content: center;align-items: center;position: fixed; bottom: 0rpx;" bindtap="UserClearHistory">
+  <text>清空浏览历史</text>
+</view>

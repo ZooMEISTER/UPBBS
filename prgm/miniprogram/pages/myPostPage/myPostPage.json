@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "postList":"../../components/postList/postList"
+  }
+}

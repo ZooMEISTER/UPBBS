@@ -1,0 +1,23 @@
+/* components/inPageTabs/inPageTabs.wxss */
+/* 自定义tabs的标题项目的总的类选择器 */
+.tabs_title{
+  display: flex;
+  padding: 10rpx 0;
+  font-size: large;
+}
+
+/* 自定义tabs内部项目的类选择器 */
+.title_item{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  border-bottom: solid 1px green;
+}
+
+/* 自定义tabs内部被选中的项目的类选择器 */
+.active{
+  color: green;
+  border-bottom: solid 5px green;
+}

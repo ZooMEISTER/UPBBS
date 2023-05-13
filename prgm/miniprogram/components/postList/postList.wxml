@@ -1,0 +1,27 @@
+<!--components/postList/postList.wxml-->
+<!-- <text>components/postList/postList.wxml</text> -->
+<view wx:for="{{allPostList}}" wx:key="index" class="postListSinglePostViewClass" data-info="{{item._id}}" bindtap="UserClickPost">
+  <!-- 构造帖子列表的结构 -->
+  <view style="width: 525rpx; border: solid 0px;display: flex; flex-direction: row;align-items: center;" data-info="{{item._id}}">
+    <text decode="{{true}}">&nbsp;</text>
+    <view wx:if="{{item.type == '闲聊'}}">
+      <image style="width: 70rpx;height:70rpx;border: solid 0px green;" src="cloud://cloud1-5gy723zk5fbe2c6a.636c-cloud1-5gy723zk5fbe2c6a-1314128664/img/chatting.png" data-info="{{item._id}}"></image>
+    </view>
+    <view wx:elif="{{item.type == '组队'}}">
+      <image style="width: 70rpx;height:70rpx;border: solid 0px green;" src="cloud://cloud1-5gy723zk5fbe2c6a.636c-cloud1-5gy723zk5fbe2c6a-1314128664/img/teamup01.png" data-info="{{item._id}}"></image>
+    </view>
+    <view wx:elif="{{item.type == '求助'}}"> 
+      <image style="width: 70rpx;height:70rpx;border: solid 0px green;" src="cloud://cloud1-5gy723zk5fbe2c6a.636c-cloud1-5gy723zk5fbe2c6a-1314128664/img/question.png" data-info="{{item._id}}"></image>
+    </view>
+    <view wx:elif="{{item.type == '好主意'}}">
+      <image style="width: 70rpx;height:70rpx;border: solid 0px green;" src="cloud://cloud1-5gy723zk5fbe2c6a.636c-cloud1-5gy723zk5fbe2c6a-1314128664/img/goodidea.png" data-info="{{item._id}}"></image>
+    </view>
+    <text decode="{{true}}">&nbsp;&nbsp;</text>{{item.title}}
+  </view>
+
+  <view style="width: 225rpx;border: solid 0px;font-size: x-small;text-align: right;" data-info="{{item._id}}">
+    <text style="color: grey;">{{item.school}}</text>
+  </view>
+</view>
+
+<view style="height: 100rpx;display: flex; justify-content: center; align-items: center;"><text>没有更多了</text></view>

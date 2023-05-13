@@ -1,0 +1,154 @@
+<!--pages/MePage/MePage.wxml-->
+<!-- <text>pages/MePage/MePage.wxml</text> -->
+
+<!-- 未登录的界面 -->
+<view class="userNotLogged_MePage_View" wx:if="{{!isUserLogged_MePage}}">
+  <text>您还未登录，请先登录</text>
+  <!-- 登录按钮 -->
+  <button type="primary" bindtap="UserStartLogin">登录</button>
+
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+
+  <text>没有账户？</text>
+  <!-- 注册按钮 -->
+  <button type="primary" bindtap="UserStartRegister">立即注册</button>
+
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+
+  <!-- 显示用户须知 -->
+  <view>
+    <text decode="{{true}}">注册/登录 即表示您已阅并同意\n</text>
+    <view style="border:solid 0px;height: 75rpx; display: flex;justify-content: center;align-items: center;font-size: larger;" bindtap="checkUserNeed2know">
+      <text decode="{{true}}" style="border-bottom:solid 1px blue;color: blue;">UPBBS用户使用须知</text>
+    </view>
+  </view>
+</view>
+<!-- 已登陆的界面 -->
+<view class="userLogged_MePage_View" wx:else>
+
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+
+  <view style="display: flex; flex-direction: row;">
+    <view style="width: 30rpx;"></view>
+
+    <!-- 头像 -->
+    <view class="loggedUserAvatarImageBoxViewViewClass">
+      <view class="loggedUserAvatarImageBoxViewClass">
+        <image src="{{loggedUserAvatarURL_MePage}}" class="loggedUserAvatarImageBox"></image>
+      </view>
+    </view>
+
+    <view style="width: 20rpx;"></view>
+
+    <view>
+      <!-- 登录的用户名 -->
+      <view class="loggedUserNameDisplayTextViewClass">
+        <text decode="{{true}}" style="font-size: xx-large;border-bottom: solid 1px rgb(190, 190, 190);">{{loggedUserName_MePage}}\n</text>
+        <view style="height: 20rpx;"></view>
+        <text decode="{{true}}">来自 {{loggedUserSchool_MePage}}\n</text>
+        <text decode="{{true}}">累计签到&nbsp;{{loggedUserClockInCount_MePage}}&nbsp;天</text>
+      </view>
+
+      <view style="height: 15rpx;"></view>
+
+      <!-- 签到按钮 -->
+      <view>
+        <button style="width: 350rpx;" type="primary" bindtap="LoggenUserClockIn" disabled="{{loggedUserAlreadyClockInToday}}">我要签到</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+  <view class="spaceView"></view>
+
+  <!-- 包含用户在MePage页面可进行的操作的按钮的总view -->
+  <view class="allUserOptionsViewClass">
+    <!-- 用于将每行操作按钮居中的view -->
+    <view class="allUserOptionsViewCenterViewClass">
+      <!-- 包含包含用户在MePage页面可进行的操作的按钮的总view的每行按钮的view -->
+      <view class="allUserOptionsViewRowViewClass">
+        <!-- 我的帖子 每个按钮操作的view -->
+        <view class="userOptionsViewClass01" bindtap="UserCheckOwnPosts"><text>我的\n帖子</text></view>
+        <!-- 每个按钮操作的view -->
+        <view class="userOptionsViewClass01" bindtap="UserCheckOwnMsgs"><text>我的\n消息</text></view>
+        <!-- 每个按钮操作的view -->
+        <view class="userOptionsViewClass01" bindtap="UserCheckHistory"><text>浏览\n历史</text></view>
+        <!-- 每个按钮操作的view -->
+        <picker bindchange="schoolPickerChange" value="{{index}}" range="{{allSchoolsList_MePage}}"></picker>
+      </view>
+      <!-- 包含包含用户在MePage页面可进行的操作的按钮的总view的每行按钮的view -->
+      <view class="allUserOptionsViewRowViewClass">
+        <!-- 修改头像 每个按钮操作的view -->
+        <view class="userOptionsViewClass02" bindtap="UserChangeAvatar"><text>修改\n头像</text></view>
+        <!-- 修改用户名 每个按钮操作的view -->
+        <view class="userOptionsViewClass02" bindtap="UserChangeName"><text>修改\n用户名</text></view>
+        <!-- 修改密码 每个按钮操作的view -->
+        <view class="userOptionsViewClass02" bindtap="UserChangePassword"><text>修改\n密码</text></view>
+        <!-- 更改学校 每个按钮操作的view -->
+        <view class="userOptionsViewClass02"> <!-- bindtap="UserChangeSchool"> -->
+          <picker bindchange="schoolPickerChange" value="{{index}}" range="{{allSchoolsList_MePage}}">
+            <view class="schoolPickerInsideViewClass">
+              <text decode="{{true}}"><text>更改\n学校</text></text>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  
+  <!-- 退出登录按钮 -->
+  <view class="UserQuitLoginButtonViewClass">
+    <button type="warn" bindtap="UserQuitLogin">退出登录</button>
+  </view>
+</view>
+
+<!-- 用户账号密码登录的弹窗 -->
+<modal hidden="{{hideLoginModal}}" title="请输入用户名密码" confirm-text="确认" cancel-text="取消" bindcancel="loginCancel" bindconfirm="loginConfirm">  
+  <view class="loginModalMsgViewClass">
+    <view class="loginModalMsgInfoViewClass">用户名：</view>
+    <input type='text' name="LoginUserName" placeholder="在此输入用户名" class="loginInputInfoTextBoxClass" bindinput="inputLoginUserName" value="{{tempInputUserName}}" auto-focus/>  
+  </view>
+  <view class="loginModalMsgViewClass">
+    <view class="loginModalMsgInfoViewClass"><text decode="{{true}}">&ensp;&ensp;密码：</text></view>
+    <input type='text' name="LoginUserPassword" placeholder="在此输入密码" class="loginInputInfoTextBoxClass" bindinput="inputLoginUserPassword" password="true" value="{{tempInputUserPassword}}" />  
+  </view>
+</modal>  
+
+<!-- 用户修改用户名的弹窗 -->
+<modal hidden="{{hideChangeUserNameModal}}" title="要更改的用户名" confirm-text="确认" cancel-text="取消" bindcancel="changeUserNameCancel" bindconfirm="changeUserNameConfirm">  
+  <view class="changeUserNameModalMsgViewClass">
+    <input type='text' name="newUserName" placeholder="在此输入用户名" class="changeUserNameInputInfoTextBoxClass" bindinput="inputChangeUserName" value="{{tempInputUserName}}" auto-focus/>  
+  </view>
+</modal>  
+
+<!-- 用户修改密码的弹窗 -->
+<modal hidden="{{hideChangeUserPasswordModal}}" title="请输入密码" confirm-text="确认" cancel-text="取消" bindcancel="changeUserPasswordCancel" bindconfirm="changeUserPasswordConfirm">  
+  <view class="changeUserPasswordModalMsgViewClass">
+    <view class="changeUserPasswordModalMsgInfoViewClass">原密码：</view>
+    <input type='text' name="changeUserPassword" placeholder="输入原密码" class="changeUserPasswordInputInfoTextBoxClass" bindinput="inputChangeUserPassword_Ori" value="{{tempInputChangeUserPassword_Ori}}" auto-focus/>  
+  </view>
+  <view class="changeUserPasswordModalMsgViewClass">
+    <view class="changeUserPasswordModalMsgInfoViewClass">新密码：</view>
+    <input type='text' name="changeUserPassword" placeholder="输入新密码" class="changeUserPasswordInputInfoTextBoxClass" bindinput="inputChangeUserPassword_New" value="{{tempInputChangeUserPassword_New}}"/>  
+  </view>
+</modal>  

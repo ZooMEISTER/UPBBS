@@ -1,0 +1,15 @@
+/* pages/FrontPage/FrontPage.wxss */
+/* 这是用来放置广场tab的一些选项的view的类选择器 */
+.groundOptionsViewClass{
+  border-bottom: solid 1px rgb(187, 187, 187);
+}
+
+/* 用一个图片来代替发帖按钮的类选择器 */
+.addNewPostImgBtnClass{
+  height: 125rpx;
+  width: 125rpx;
+  position: fixed;
+  right: 50rpx;
+  bottom: 75rpx;
+  /* background-color: white; */
+}

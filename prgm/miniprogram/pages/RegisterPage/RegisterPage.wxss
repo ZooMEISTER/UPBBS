@@ -1,0 +1,64 @@
+/* pages/RegisterPage/RegisterPage.wxss */
+
+/* spaceview的类选择器 */
+.spaceView01{
+  height: 15rpx;
+}
+
+/* 包含包含注册用户头像image的view的view 用于让头像居中 */
+.tempRegisterUserAvatarImageBoxViewViewClass{
+  display: flex;
+  justify-content: center;
+}
+
+/* 包含注册用户头像image的view的类选择器 */
+.tempRegisterUserAvatarImageBoxViewClass{
+  border: 15rpx inset;
+}
+
+/* 注册用户头像image的类选择器 */
+.tempRegisterUserAvatarImageBox{
+  height: 300rpx;
+  width: 300rpx;
+}
+
+/* 包含注册用户输入注册信息的textbox的view的类选择器 */
+.RegisterUserInfoTextBoxViewClass{
+  font-size:larger;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+}
+
+/* 注册用户输入注册信息的textbox的类选择器 */
+.RegisterUserInfoTextBoxClass{
+  border-bottom: 1rpx solid grey;
+}
+
+/* 包含了用户选择学校的picker的view的类选择器 */
+.schoolPickerOutsideViewClass{
+  /* border: solid 1px; */
+  display: flex;
+  justify-content: center;
+}
+
+/* 用户选择学校的picker的内部的view的类选择器 */
+.schoolPickerInsideViewClass{
+  border: solid 1px rgb(206, 206, 206);
+  width: 600rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  font-size: large;
+}
+
+/* 包含了注册按钮的view的类选择器 */
+.RegisterButtonViewClass{
+  /* border: solid 2px ; */
+  width: 100%;
+  position: fixed;
+  bottom: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

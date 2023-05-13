@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/FrontPage/FrontPage",
+    "pages/MePage/MePage",
+    "pages/RegisterPage/RegisterPage",
+    "pages/showPostPage/showPostPage",
+    "pages/addNewPostPage/addNewPostPage",
+    "pages/myPostPage/myPostPage",
+    "pages/showRecommendContentPage/showRecommendContentPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "UPBBS",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/FrontPage/FrontPage",
+        "text": "首页",
+        "iconPath": "/temp/img/frontpage.png",
+        "selectedIconPath": "/temp/img/frontpage.png"
+      },
+      {
+        "pagePath": "pages/MePage/MePage",
+        "text": "我",
+        "iconPath": "/temp/img/me.png",
+        "selectedIconPath": "/temp/img/me.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

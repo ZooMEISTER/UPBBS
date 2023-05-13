@@ -1,0 +1,44 @@
+<!--pages/addNewPostPage/addNewPostPage.wxml-->
+<!-- <text>pages/addNewPostPage/addNewPostPage.wxml</text> -->
+<!-- 包含要发布的帖子的标题的view -->
+<view style="border-bottom: solid 1px rgb(190, 190, 190);font-size: x-large;height: 100rpx;">
+  <input type="text" placeholder="在此输入帖子标题 <= 15字" style="height: 100rpx;" maxlength="15" bindinput="inputNewPostTitle" auto-focus/>
+</view>
+
+<view style="height: 10rpx;"></view>
+
+<view style="display: flex; flex-direction: row;justify-content: center;">
+  <!-- 一个picker用于选择帖子的类型 闲聊/组队/求助/好主意 -->
+  <view class="userPickNewPostOutsideViewClass">
+    <picker style="height: 70rpx; border: solid 0px;" bindchange="newPostTypePickerChange" value="{{index}}" range="{{allPostType}}">
+      <view class="userPickNewPostInsideViewClass">
+        <text decode="{{true}}">&nbsp;帖子类型：{{tempNewPostType}}</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- <view style="width: 40rpx;"></view> -->
+
+  <!-- 一个picker用于选择帖子所属的大学分区 默认为隐藏 -->
+  <view class="userPickNewPostOutsideViewClass">
+    <picker style="height: 70rpx; border: solid 0px;" bindchange="newPostSchoolPickerChange" value="{{index}}" range="{{allPostSchool}}">
+      <view style="height: 70rpx; width: 450rpx;display: flex;justify-content: center;align-items: center;"> <!-- class="userPickNewPostInsideViewClass" -->
+        <text decode="{{true}}">&nbsp;学校分区：{{tempNewPostSchool}}</text>
+      </view>
+    </picker>
+  </view>
+</view>
+
+<view style="height: 10rpx;"></view>
+
+<!-- 包含要发布的帖子的内容的view -->
+<view style="font-size: larger;">
+  <textarea placeholder="在此输入帖子内容 <= 300字" style="border-top: solid 1px rgb(190, 190, 190);border-bottom: solid 1px rgb(190, 190, 190);width: 100%;height: 800rpx;" bindinput="inputNewPostContent" maxlength="300"></textarea>
+</view>
+
+<!-- 包含了发布帖子按钮的view -->
+<view style="position: fixed;bottom: 80rpx;width: 100%;">
+  <button bindtap="PublishNewPost">发布帖子</button>
+</view>
+
+

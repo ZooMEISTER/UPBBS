@@ -1,0 +1,106 @@
+<!--pages/FrontPage/FrontPage.wxml-->
+<!-- 
+设计的帖子结构：
+  每个帖子为数据库中的一条记录
+  每个帖子记录下都有5个字段
+    1._id：系统自动生成，为每个帖子的唯一标识符
+    2.title：帖子的标题
+    3.description：帖子的描述，也就是发帖人写在1楼的内容
+    4.publisher：为发帖人的_id用于标识该帖子使是由谁发布的
+    5.reply：楼下的回复
+        reply.data[n]：为一条回复
+        reply.data[n].data[0]：为该回复的发布者
+        reply.data[n].data[1]：为该回复的内容
+        reply.data[n].data[2]：为该回复的时间 
+    6.type：帖子的种类
+        chatting：闲聊
+        teamup：组队
+        question：提问
+    7.publishdate:贴子发布的时间
+    8.latestreplytime:帖子最后回复的时间
+    9.school：帖子属于的学校分区
+ -->
+<!-- <text>pages/FrontPage/FrontPage.wxml</text> -->
+<inPageTabs style="position: fixed; top: 0rpx;width: 100%;" tabs="{{tabs}}" binditemChange="handleItemChange">
+  <view wx:if="{{tabs[0].isActive}}"> <!-- 推荐栏目 -->
+  <!-- scroll-view让页内tabbar不随着页面上下滚动 -->
+    <scroll-view scroll-y="true" style="height: 92vh;"> 
+      <!-- 推荐栏目最顶上的滚动推荐 从数据库获取推荐的内容 -->
+      <swiper style="border-bottom: solid 0px; height: 430rpx;" indicator-dots="true" indicator-active-color="white"> 
+        <swiper-item style="background-color: red;">
+          <view style="border: solid 0px; text-align: center;">
+            <!-- <text style="color: white;">推荐位1</text> -->
+            <text style="position: fixed; top: 350rpx;color: white;width: 100%; border: solid 0px red;">{{MajorRecommendContentArray.content01[0]}}</text>
+            <image style="width: 100%; height: 430rpx;" bindtap="UserClickTopRecommendContent01" src="{{MajorRecommendContentArray.content01[1]}}"></image>
+          </view>
+        </swiper-item>
+        <swiper-item style="background-color: green;">
+          <view style="border: solid 0px; text-align: center;">
+            <!-- <text style="color: white;">推荐位2</text> -->
+            <text style="position: fixed; top: 350rpx;color: white;width: 100%; border: solid 0px red;">{{MajorRecommendContentArray.content02[0]}}</text>
+            <image style="width: 100%; height: 430rpx;" bindtap="UserClickTopRecommendContent02" src="{{MajorRecommendContentArray.content02[1]}}"></image>
+          </view>
+        </swiper-item>
+        <swiper-item style="background-color: blue;">
+          <view style="border: solid 0px; text-align: center;">
+            <!-- <text style="color: white;">推荐位3</text> -->
+            <text style="position: fixed; top: 350rpx;color: white;width: 100%; border: solid 0px red;">{{MajorRecommendContentArray.content03[0]}}</text>
+            <image style="width: 100%; height: 430rpx;" bindtap="UserClickTopRecommendContent03" src="{{MajorRecommendContentArray.content03[1]}}"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+
+      <!-- 下方普通推荐位 -->
+      <!-- <view wx:for="{{recommendContentArray2}}" wx:key="index" style="border-bottom: solid 1px rgb(190, 190, 190);height: 125rpx;">
+        <text>{{item["title"]}}</text>
+      </view> -->
+      <view wx:for="{{MinorRecommendContentArray}}" wx:key="index" style="border-bottom: solid 1px rgb(190, 190, 190);height: 200rpx; display: flex; flex-direction: row;align-items: center;" bindtap="UserClickMinorRecommendContent" data-info="{{index}}">
+        <view style="width: 15rpx;"></view>
+        <text style="border: solid 0px green;width: 400rpx;">{{item[0]}}</text>
+        <image style="height: 180rpx; width: 320rpx; border: solid 0px blue;" src="{{item[1]}}"></image>
+        <view style="width: 15rpx;"></view>
+      </view>
+
+
+
+    </scroll-view>
+  </view>
+  <view wx:elif="{{tabs[1].isActive}}"> <!-- 广场栏目 -->
+    <!-- 这里放置一些广场tab下的选项比如筛选之类的 -->
+    <view style="display: flex; flex-direction: row; height: 60rpx;justify-content: center;" class="groundOptionsViewClass">
+      <!-- <text decode="{{true}}">广场&nbsp;&nbsp;&nbsp;&nbsp;</text> -->
+      <!-- 筛选广场上的帖子 帖子类型 -->
+      <view>
+        <picker style="height: 60rpx;width: 45vw; border: solid 0px rgb(185, 185, 185);" bindchange="screenPostTypePickerChange" value="{{index}}" range="{{allScreenPostTypePickerItem}}">
+          <view style="text-align: center;">
+            <text decode="{{true}}">类型筛选:{{tempChosenScreenPostType}}</text>
+          </view>
+        </picker>
+      </view>
+
+      <view style="width: 3vw;"></view>
+
+      <!-- 筛选广场上的帖子 学校 -->
+      <view>
+        <picker style="height: 60rpx; width: 45vw; border: solid 0px rgb(185, 185, 185);" bindchange="screenPostSchoolPickerChange" value="{{index}}" range="{{allScreenPostSchoolPickerItem2}}">
+          <view style="text-align: center;">
+            <text decode="{{true}}">学校筛选:{{tempChosenScreenPostSchool}}</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 88vh;"> <!-- 这里的高度还需要优化  -->
+      <postList allPostList="{{allScreenedPost2}}"></postList>
+    </scroll-view>
+  </view>
+</inPageTabs>
+
+<!-- 用一个图片来代替发帖按钮 -->
+<!-- 下面这个外层view使得在推荐页面不显示发帖按钮 -->
+<!-- 此view可要可不要 在推荐栏目下点击发帖的逻辑也写了 -->
+<view wx:if="{{tabs[1].isActive}}"> 
+  <image class="addNewPostImgBtnClass" bindtap="AddNewPost" src="addpost.png"></image>
+</view>
+
+<!-- 这里很奇怪 他不许我用\img\addpost.png -->
+<!-- 不只是这里，微信小程序的image如果用本地文件可能会路径无效导致无法访问图片资源，即使路径是完全正确的 -->

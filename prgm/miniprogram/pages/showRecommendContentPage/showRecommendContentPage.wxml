@@ -1,0 +1,28 @@
+<!--pages/showRecommendContentPage/showRecommendContentPage.wxml-->
+<!-- <text>pages/showRecommendContentPage/showRecommendContentPage.wxml</text> -->
+<!-- 推荐内容封面图片 -->
+<view style="width: 750rpx;height: 422rpx;">
+  <image src="{{coverImageURL}}" style="width: 750rpx;height: 422rpx;"></image>
+</view>
+
+<view style="height: 15rpx;"></view>
+
+<!-- 推荐内容标题 -->
+<view style="width: 750rpx;text-align: center;font-size: x-large;">
+  <text>{{recommendContentTitle}}</text>
+</view>
+
+<view style="height: 15rpx;"></view>
+
+<!-- 推按内容发布日期 -->
+<view style="width: 750rpx; font-size: small;text-align: end;">
+  <text>{{recommendContentPublishDate}}</text>
+</view>
+
+<view style="height: 15rpx;"></view>
+
+<!-- 推荐内容正文 -->
+<view>
+  <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{recommendContent}}</text>
+</view>
+

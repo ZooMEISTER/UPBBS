@@ -1,0 +1,135 @@
+/* pages/MePage/MePage.wxss */
+
+/* 空白view的类选择器 */
+.spaceView{
+  height: 15rpx;
+}
+
+/* MePage中用户未登录的view的类选择器 */
+.userNotLogged_MePage_View{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top:300rpx
+}
+
+/* 登录弹窗内部包含提示(账号/密码)和输入框的view的类选择器 横向排列 */
+.loginModalMsgViewClass{
+  display: flex;
+  flex-direction: row;
+}
+/* 修改密码弹窗内部布局同上 */
+.changeUserPasswordModalMsgViewClass{
+  display: flex;
+  flex-direction: row;
+}
+
+/* 登陆窗内部提示(账号/密码)的类选择器 给字体加粗 */
+.loginModalMsgInfoViewClass{
+  font-weight: 900;
+  color: black;
+}
+/* 修改密码弹窗内部布局同上 */
+.changeUserPasswordModalMsgInfoViewClass{
+  font-weight: 900;
+  color: black;
+}
+
+/* 登录弹窗内输入信息的textbox的类选择器 */
+.loginInputInfoTextBoxClass{
+  border-bottom: solid 0px grey;
+}
+
+/* 包含包含头像image的view的view 用于让头像居中 */
+.loggedUserAvatarImageBoxViewViewClass{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* border: 15rpx inset; */
+}
+
+/* 包含头像image的view的类选择器 */
+.loggedUserAvatarImageBoxViewClass{
+  height: 300rpx;
+  width: 300rpx;
+  border: 15rpx inset;
+}
+
+/* 头像image的类选择器 */
+.loggedUserAvatarImageBox{
+  height: 300rpx;
+  width: 300rpx;
+}
+
+/* 包含显示已登录用户名称的text的类选择器 */
+.loggedUserNameDisplayTextViewClass{
+  text-align: center;
+}
+
+/* 包含用户在MePage页面可进行的操作的按钮的总view的类选择器 */
+.allUserOptionsViewClass{
+  /* border: solid 1px; */
+  display: flex;
+  justify-content: center;
+  
+}
+
+/* 用于将每行操作按钮居中的view的类选择器 */
+.allUserOptionsViewCenterViewClass{
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 包含包含用户在MePage页面可进行的操作的按钮的总view的每行按钮的view的类选择器 */
+.allUserOptionsViewRowViewClass{
+  width: 100%;
+  height: 220rpx;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  /* border: solid 1px green; */
+}
+
+/* 每个按钮操作的view的类选择器 */
+.userOptionsViewClass01{
+  border: solid 1px rgb(233, 233, 233);
+  height: 100%;
+  width: 32%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-size: x-large;
+}
+.userOptionsViewClass02{
+  border: solid 1px rgb(233, 233, 233);
+  height: 75%;
+  width: 24%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+}
+
+/* 用户更改学校的picker的内部的view的类选择器 */
+.schoolPickerInsideViewClass{
+  border: solid 0px rgb(119, 60, 60);
+  width: 230rpx;
+  height: 220rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+/* 包含退出登录按钮的view的类选择器 */
+.UserQuitLoginButtonViewClass{
+  position: fixed;
+  width: 100%;
+  bottom: 50rpx;
+}
